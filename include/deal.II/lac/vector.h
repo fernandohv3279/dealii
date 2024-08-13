@@ -300,6 +300,11 @@ public:
    * However, for the implementation of this class, it is immaterial and thus
    * an empty function.
    */
+
+  // This function is equivalent to writing <code>size() == 0</code>.
+  bool
+  empty() const;
+
   void
   compress(VectorOperation::values operation = VectorOperation::unknown) const;
 
@@ -1382,6 +1387,12 @@ Vector<Number>::operator!=(const Vector<Number2> &v) const
 }
 
 
+template <typename Number>
+inline bool
+Vector<Number>::empty() const
+{
+  return this->size() == 0;
+}
 
 template <typename Number>
 inline void
