@@ -587,7 +587,7 @@ namespace SparsityTools
     Assert(starting_indices.size() <= sparsity.n_rows(),
            ExcMessage(
              "You can't specify more starting indices than there are rows"));
-    Assert(sparsity.row_index_set().size() == 0 ||
+    Assert(sparsity.row_index_set().empty() ||
              sparsity.row_index_set().size() == sparsity.n_rows(),
            ExcMessage(
              "Only valid for sparsity patterns which store all rows."));
@@ -721,7 +721,7 @@ namespace SparsityTools
     {
       AssertDimension(connectivity.n_rows(), connectivity.n_cols());
       AssertDimension(connectivity.n_rows(), renumbering.size());
-      Assert(connectivity.row_index_set().size() == 0 ||
+      Assert(connectivity.row_index_set().empty() ||
                connectivity.row_index_set().size() == connectivity.n_rows(),
              ExcMessage(
                "Only valid for sparsity patterns which store all rows."));

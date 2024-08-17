@@ -1294,7 +1294,7 @@ namespace MGTools
       return;
 
     for (unsigned int i = 0; i < dof.get_triangulation().n_global_levels(); ++i)
-      if (boundary_indices[i].size() == 0)
+      if (boundary_indices[i].empty())
         boundary_indices[i] = IndexSet(dof.n_dofs(i));
 
     const unsigned int n_components = dof.get_fe_collection().n_components();

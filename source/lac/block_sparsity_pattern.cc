@@ -261,8 +261,7 @@ BlockSparsityPatternBase<DynamicSparsityPattern>::print(std::ostream &out) const
           for (size_type jb = 0; jb < n_block_cols(); ++jb)
             {
               const DynamicSparsityPattern &b = block(ib, jb);
-              if (b.row_index_set().size() == 0 ||
-                  b.row_index_set().is_element(i))
+              if (b.row_index_set().empty() || b.row_index_set().is_element(i))
                 for (size_type j = 0; j < b.n_cols(); ++j)
                   if (b.exists(i, j))
                     out << ',' << l + j;

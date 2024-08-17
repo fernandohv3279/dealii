@@ -1813,7 +1813,7 @@ namespace internal
           for (unsigned int d = 1; d < dim; ++d)
             for (auto &i : dof_handler.object_dof_indices[0][d])
               if (i != numbers::invalid_dof_index)
-                i = ((indices_we_care_about.size() == 0) ?
+                i = ((indices_we_care_about.empty()) ?
                        new_numbers[i] :
                        new_numbers[indices_we_care_about.index_within_set(i)]);
         }
@@ -1842,7 +1842,7 @@ namespace internal
                    ++i)
                 if (*i != numbers::invalid_dof_index)
                   *i =
-                    (indices_we_care_about.size() == 0) ?
+                    (indices_we_care_about.empty()) ?
                       (new_numbers[*i]) :
                       (new_numbers[indices_we_care_about.index_within_set(*i)]);
                 else if (check_validity)
@@ -1933,7 +1933,7 @@ namespace internal
                           // This will later be fixed up after the first ghost
                           // exchange phase when we unify hp-DoFs on neighboring
                           // cells.
-                          if (indices_we_care_about.size() == 0)
+                          if (indices_we_care_about.empty())
                             dealii::internal::DoFAccessorImplementation::
                               Implementation::set_dof_index(
                                 dof_handler,
@@ -1991,7 +1991,7 @@ namespace internal
                    ++level)
                 for (auto &i : dof_handler.object_dof_indices[level][dim])
                   if (i != numbers::invalid_dof_index)
-                    i = ((indices_we_care_about.size() == 0) ?
+                    i = ((indices_we_care_about.empty()) ?
                            new_numbers[i] :
                            new_numbers[indices_we_care_about.index_within_set(
                              i)]);
@@ -2026,7 +2026,7 @@ namespace internal
                         // set it to an invalid index. This will later be fixed
                         // up after the first ghost exchange phase when we unify
                         // hp-DoFs on neighboring cells.
-                        if (indices_we_care_about.size() == 0)
+                        if (indices_we_care_about.empty())
                           cell->set_dof_index(d,
                                               new_numbers[old_dof_index],
                                               fe_index);
@@ -2077,7 +2077,7 @@ namespace internal
               for (unsigned int d = 1; d < dim; ++d)
                 for (auto &i : dof_handler.object_dof_indices[0][d])
                   if (i != numbers::invalid_dof_index)
-                    i = ((indices_we_care_about.size() == 0) ?
+                    i = ((indices_we_care_about.empty()) ?
                            new_numbers[i] :
                            new_numbers[indices_we_care_about.index_within_set(
                              i)]);
@@ -2130,7 +2130,7 @@ namespace internal
                                   // will later be fixed up after the first
                                   // ghost exchange phase when we unify hp-DoFs
                                   // on neighboring cells.
-                                  if (indices_we_care_about.size() == 0)
+                                  if (indices_we_care_about.empty())
                                     line->set_dof_index(
                                       d, new_numbers[old_dof_index], fe_index);
                                   else
@@ -2172,7 +2172,7 @@ namespace internal
               for (unsigned int d = 1; d < dim; ++d)
                 for (auto &i : dof_handler.object_dof_indices[0][d])
                   if (i != numbers::invalid_dof_index)
-                    i = ((indices_we_care_about.size() == 0) ?
+                    i = ((indices_we_care_about.empty()) ?
                            new_numbers[i] :
                            new_numbers[indices_we_care_about.index_within_set(
                              i)]);
@@ -2225,7 +2225,7 @@ namespace internal
                                   // will later be fixed up after the first
                                   // ghost exchange phase when we unify hp-DoFs
                                   // on neighboring cells.
-                                  if (indices_we_care_about.size() == 0)
+                                  if (indices_we_care_about.empty())
                                     line->set_dof_index(
                                       d, new_numbers[old_dof_index], fe_index);
                                   else if (indices_we_care_about.is_element(
@@ -2291,7 +2291,7 @@ namespace internal
                                   // will later be fixed up after the first
                                   // ghost exchange phase when we unify hp-DoFs
                                   // on neighboring cells.
-                                  if (indices_we_care_about.size() == 0)
+                                  if (indices_we_care_about.empty())
                                     quad->set_dof_index(
                                       d, new_numbers[old_dof_index], fe_index);
                                   else
@@ -2412,7 +2412,7 @@ namespace internal
                              ExcInternalError());
                       i->access_index(
                         level, d, dof_handler.get_fe().n_dofs_per_vertex()) =
-                        (indices_we_care_about.size() == 0) ?
+                        (indices_we_care_about.empty()) ?
                           new_numbers[idx] :
                           new_numbers[indices_we_care_about.index_within_set(
                             idx)];
@@ -2449,7 +2449,7 @@ namespace internal
                             (*i < new_numbers.size())),
                          ExcInternalError());
                   *i =
-                    (indices_we_care_about.size() == 0) ?
+                    (indices_we_care_about.empty()) ?
                       (new_numbers[*i]) :
                       (new_numbers[indices_we_care_about.index_within_set(*i)]);
                 }
@@ -2536,7 +2536,7 @@ namespace internal
                                     if (indices[d] !=
                                         numbers::invalid_dof_index)
                                       indices[d] =
-                                        (indices_we_care_about.size() == 0) ?
+                                        (indices_we_care_about.empty()) ?
                                           new_numbers[indices[d]] :
                                           new_numbers[indices_we_care_about
                                                         .index_within_set(
@@ -2576,7 +2576,7 @@ namespace internal
                                     if (indices[d] !=
                                         numbers::invalid_dof_index)
                                       indices[d] =
-                                        (indices_we_care_about.size() == 0) ?
+                                        (indices_we_care_about.empty()) ?
                                           new_numbers[indices[d]] :
                                           new_numbers[indices_we_care_about
                                                         .index_within_set(

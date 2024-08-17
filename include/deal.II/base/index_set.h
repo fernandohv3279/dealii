@@ -268,6 +268,10 @@ public:
   bool
   is_empty() const;
 
+  // This is equivalent to <code>size() == 0</code>.
+  bool
+  empty() const;
+
   /**
    * Return whether the IndexSets are ascending with respect to MPI process
    * number and 1:1, i.e., each index is contained in exactly one IndexSet
@@ -1928,6 +1932,11 @@ IndexSet::is_empty() const
   return ranges.empty();
 }
 
+inline bool
+IndexSet::empty() const
+{
+  return this->size() == 0;
+}
 
 
 inline IndexSet::size_type
@@ -2028,10 +2037,10 @@ IndexSet::operator==(const IndexSet &is) const
 {
   // If one of the two index sets has size zero, the other one has to
   // have size zero as well:
-  if (size() == 0)
-    return (is.size() == 0);
-  if (is.size() == 0)
-    return (size() == 0);
+  if (empty())
+    return (is.empty());
+  if (is.empty())
+    return (empty());
 
   // Otherwise, they must have the same size (see the documentation):
   Assert(size() == is.size(), ExcDimensionMismatch(size(), is.size()));
@@ -2049,9 +2058,9 @@ IndexSet::operator!=(const IndexSet &is) const
 {
   // If one of the two index sets has size zero, the other one has to
   // have a non-zero size for inequality:
-  if (size() == 0)
+  if (empty())
     return (is.size() != 0);
-  if (is.size() == 0)
+  if (is.empty())
     return (size() != 0);
 
   // Otherwise, they must have the same size (see the documentation):

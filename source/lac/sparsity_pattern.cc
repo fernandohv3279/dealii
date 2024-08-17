@@ -487,7 +487,7 @@ SparsityPattern::copy_from(const DynamicSparsityPattern &dsp)
 
   std::vector<unsigned int> row_lengths(dsp.n_rows());
 
-  if (row_index_set.size() == 0)
+  if (row_index_set.empty())
     {
       for (size_type i = 0; i < dsp.n_rows(); ++i)
         {

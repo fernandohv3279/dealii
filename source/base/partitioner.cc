@@ -391,7 +391,7 @@ namespace Utilities
 
 #  endif // #ifdef DEAL_II_WITH_MPI
 
-      if (larger_ghost_index_set.size() == 0)
+      if (larger_ghost_index_set.empty())
         {
           ghost_indices_subset_chunks_by_rank_data.clear();
           ghost_indices_subset_data.emplace_back(0, n_ghost_indices());

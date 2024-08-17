@@ -211,7 +211,7 @@ MGConstrainedDoFs::add_user_constraints(
 
   // Get the relevant DoFs from level_constraints if
   // the user constraint matrix has not been initialized
-  if (user_constraints[level].get_local_lines().size() == 0)
+  if (user_constraints[level].get_local_lines().empty())
     user_constraints[level].reinit(
       level_constraints[level].get_locally_owned_indices(),
       level_constraints[level].get_local_lines());

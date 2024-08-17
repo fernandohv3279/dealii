@@ -87,8 +87,8 @@ MGTransferBlock<number>::prolongate(const unsigned int         to_level,
 #ifdef DEBUG
   if (this->mg_constrained_dofs != nullptr)
     Assert(this->mg_constrained_dofs->get_user_constraint_matrix(to_level - 1)
-               .get_local_lines()
-               .size() == 0,
+             .get_local_lines()
+             .empty(),
            ExcNotImplemented());
 #endif
 
@@ -271,8 +271,8 @@ MGTransferBlockSelect<number>::prolongate(const unsigned int    to_level,
 #ifdef DEBUG
   if (this->mg_constrained_dofs != nullptr)
     Assert(this->mg_constrained_dofs->get_user_constraint_matrix(to_level - 1)
-               .get_local_lines()
-               .size() == 0,
+             .get_local_lines()
+             .empty(),
            ExcNotImplemented());
 #endif
 
